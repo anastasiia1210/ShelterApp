@@ -1,6 +1,7 @@
 import { FunctionComponent } from 'react';
 import { NavLink } from "react-router-dom";
 import "./styles.css";
+import donate from "../Donate/Donate";
 
 const Header: FunctionComponent<never> = () => {
 
@@ -8,11 +9,17 @@ const Header: FunctionComponent<never> = () => {
       <div className="header">
         <ul>
           <li>
-            <NavLink to="/">Home</NavLink>
+            <NavLink to="/">Головна</NavLink>
           </li>
           <li>
-            <NavLink to="/animals">Animals</NavLink>
+            <NavLink to="/animals">Тварини</NavLink>
           </li>
+            <li>
+                <NavLink to="/volunteering">Волонтерство</NavLink>
+            </li>
+            <li>
+                <NavLink to="/donate">Допомога</NavLink>
+            </li>
         </ul>
       </div>
   );

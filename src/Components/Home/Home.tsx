@@ -3,7 +3,7 @@ import { FunctionComponent } from "react";
 const Home: FunctionComponent = () => {
   return (
       <div>
-          <h1>Home</h1>
+          <h1>Інформація про притулок</h1>
       </div>
   );
 };

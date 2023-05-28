@@ -5,6 +5,8 @@ import App from './App.tsx'
 import './index.css'
 import Home from "./Components/Home/Home";
 import Animals from "./Components/Animals/Animals";
+import Volunteering from "./Components/Volunteering/Volunteering";
+import Donate from "./Components/Donate/Donate";
 
 const router = createBrowserRouter([
     {
@@ -18,6 +20,14 @@ const router = createBrowserRouter([
             {
                 path: "/animals",
                 element: <Animals />,
+            },
+            {
+                path: "/volunteering",
+                element: <Volunteering />,
+            },
+            {
+                path: "/donate",
+                element: <Donate />,
             }
         ],
     },

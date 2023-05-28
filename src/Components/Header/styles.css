@@ -1,5 +1,11 @@
 .header {
-    padding: 10px 40px;
+    padding: 10px 50px;
+    background-color: #263A29;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    font-family: Verdana;
+    font-weight: bold;
 }
 
 .header > ul {

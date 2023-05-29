@@ -1,0 +1,42 @@
+footer{
+    background-color: black;
+    color: white;
+    position: sticky;
+    top: 100%;
+    width: 100%;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    gap: 20px;
+    padding: 20px
+}
+
+.icons {
+    display: flex;
+    gap: 10px
+}
+
+.icons > a{
+    font-size: 25px;
+    color: white;
+}
+
+.contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.icons{
+
+}
+
+.copyright {
+    margin-top: 10px;
+}
+
+

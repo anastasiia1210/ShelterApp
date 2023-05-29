@@ -1,27 +1,31 @@
 import { FunctionComponent } from 'react';
 import { NavLink } from "react-router-dom";
-import "./styles.css";
+import "./header.css";
 import donate from "../Donate/Donate";
 
 const Header: FunctionComponent<never> = () => {
 
   return (
-      <div className="header">
-        <ul>
-          <li>
-            <NavLink to="/">Головна</NavLink>
-          </li>
-          <li>
-            <NavLink to="/animals">Тварини</NavLink>
-          </li>
-            <li>
-                <NavLink to="/volunteering">Волонтерство</NavLink>
-            </li>
-            <li>
-                <NavLink to="/donate">Допомога</NavLink>
-            </li>
-            <div className="logo"><img src="src/Images/logo1.png" alt="React Image" /></div>
-        </ul>
+      <div className="header-wrapper">
+          <nav>
+              <ul className="header-nav">
+                  <li>
+                      <NavLink className="nav-link" to="/">Головна</NavLink>
+                  </li>
+                  <li>
+                      <NavLink className="nav-link" to="/animals">Тварини</NavLink>
+                  </li>
+                  <li>
+                      <NavLink className="nav-link" to="/volunteering">Волонтерство</NavLink>
+                  </li>
+                  <li>
+                      <NavLink className="nav-link" to="/donate">Допомога</NavLink>
+                  </li>
+              </ul>
+          </nav>
+          <div className="logo-wrapper">
+              <img src="src/Images/logo-transparent-bg.png" alt="Logo" />
+          </div>
       </div>
   );
 };

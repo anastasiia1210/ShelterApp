@@ -20,7 +20,7 @@ const Header: FunctionComponent<never> = () => {
             <li>
                 <NavLink to="/donate">Допомога</NavLink>
             </li>
-            <div className="logo"><img src="src/Images/logo.png" alt="React Image" /></div>
+            <div className="logo"><img src="src/Images/logo1.png" alt="React Image" /></div>
         </ul>
       </div>
   );

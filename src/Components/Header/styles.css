@@ -1,11 +1,15 @@
 .header {
     padding: 10px 50px;
-    background-color: #629a67;
+    background-color: white;
     position: fixed;
     top: 0;
     width: 100%;
-    font-family: Verdana;
+    height: 55px;
+    /*font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;*/
+    font-family: inherit;
     font-weight: bold;
+    font-size: 25px;
+
 }
 
 .header > ul {
@@ -16,13 +20,12 @@
     align-items: center;
     box-sizing: border-box;
     padding: 0;
-
     height: 50px;
     border-bottom: none;
 }
 .logo{
     display: flex;
-    padding-top: 70px;
-    scale: 25%;
-    padding-left: 75%;
+    padding-top: 3%;
+    scale: 13%;
+    padding-left: 60%;
 }

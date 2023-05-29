@@ -1,6 +1,6 @@
 .header {
     padding: 10px 50px;
-    background-color: #263A29;
+    background-color: #629a67;
     position: fixed;
     top: 0;
     width: 100%;
@@ -17,6 +17,12 @@
     box-sizing: border-box;
     padding: 0;
 
-    height: 40px;
+    height: 50px;
     border-bottom: none;
+}
+.logo{
+    display: flex;
+    padding-top: 70px;
+    scale: 25%;
+    padding-left: 75%;
 }

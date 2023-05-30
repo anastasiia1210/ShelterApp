@@ -1,0 +1,42 @@
+.table-wrapper{
+    display: flex;
+    width: 100%;
+    align-self: center;
+}
+.volunteering_table {
+    width: 100%;
+    border-spacing: 0 10px;
+}
+tr, td{
+    width: 100%;
+    border: 2px solid #ec6c34;
+}
+.activity-wrapper{
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    padding: 10px 10px 10px 10px;
+}
+.text-activity-div{
+    width: 100%;
+    padding-right: 3em;
+}
+.div-for-button{
+    width: 20%;
+}
+.registration-button{
+    margin-top: 40%;
+    height: 40px;
+    width: 60%;
+    background-color: #3ec70b;
+    border-radius: 10px;
+    border: none;
+    color: white;
+}
+.registration-button:hover{
+    transform: scale(1.1);
+    border: 2px solid #ec6c34;
+}
+.text-activity-div > h2{
+    margin: 5px;
+}

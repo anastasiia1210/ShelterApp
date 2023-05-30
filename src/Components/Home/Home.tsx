@@ -69,8 +69,8 @@ const Home: FunctionComponent = () => {
                             src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=Товариство захисту тварин “SOS”&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
                 </div>
                 <div className="text-wrapper">
-                    <h1>Контакти</h1>
-                    <div>
+                    <div className="address">
+                        <h1>Контакти</h1>
                         <p><b>Адреса:</b> вул. Пирогівський шлях 186, Пирогово (Київ)</p>
                         <p><b>Графік роботи:</b> 10:00-20:00 пн-сб</p>
                         <p><b>Телефонуйте:</b> +380976809114</p>

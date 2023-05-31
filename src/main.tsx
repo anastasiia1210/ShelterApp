@@ -7,6 +7,8 @@ import Home from "./Components/Home/Home";
 import Animals from "./Components/Animals/Animals";
 import Volunteering from "./Components/Volunteering/Volunteering";
 import Donate from "./Components/Donate/Donate";
+import FormVolunteering from "./Components/Forms/FormVolunteering";
+import FormSignIn from "./Components/Forms/FormSignIn";
 
 const router = createBrowserRouter([
     {
@@ -28,6 +30,14 @@ const router = createBrowserRouter([
             {
                 path: "/donate",
                 element: <Donate />,
+            },
+            {
+                path: "/formVolunteering",
+                element: <FormVolunteering />,
+            },
+            {
+                path: "/formSignIn",
+                element: <FormSignIn />,
             }
         ],
     },

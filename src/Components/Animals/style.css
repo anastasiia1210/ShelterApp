@@ -1,6 +1,7 @@
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
 
+
 .btn-primary:hover,
 .btn-primary:focus {
     background-color: #108d6f;
@@ -8,7 +9,10 @@
     box-shadow: none;
     outline: none;
 }
-
+ h5{
+     padding-top: 0;
+    text-align: center;
+ }
 
 section {
     padding: 60px 0;

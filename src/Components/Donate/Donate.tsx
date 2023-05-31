@@ -8,13 +8,16 @@ const Donate: FunctionComponent = () => {
         <div>
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
             <div className = "center">
+                <div>
                 <h2>Найкращий спосіб допомогти нам
                     і нашим хвостикам – пожертвувати будь-яку суму на корм, лікування та забезпечення роботи
                     притулку.</h2>
-                <form action="">
+                    </div>
+                <div className="cent">
+                <form action="" >
                 <button type="submit" className="button-24" role="button"> <h3 className = "forText">Допомогти</h3>
                 <span className="material-symbols-outlined">pets</span>
-                </button></form>
+                </button></form></div>
             </div>
 
         </div>

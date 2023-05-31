@@ -1,6 +1,9 @@
-import { FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
 import "./volunteering.css";
 import DateComponent from "./DateComponent";
+import {createBrowserRouter, Link, RouterProvider} from 'react-router-dom';
+import FormVolunteering from "../Forms/FormVolunteering";
+import Animals from "../Animals/Animals";
 const Volunteering: FunctionComponent = () => {
 interface Activity{
     id: number
@@ -38,7 +41,9 @@ const exampleActivity: Activity = {
                             <p><b>Скільки людей потрібно:</b> {activity.number_of_people}</p>
                             </div>
                            <div className="div-for-button">
+                           <Link to="/formVolunteering">
                                <button className="registration-button"><b>Зареєструватися</b></button>
+                           </Link>
                            </div>
                         </div>
                     </td>

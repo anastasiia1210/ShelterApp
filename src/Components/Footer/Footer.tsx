@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
                         </a>
                     </div>
                     <div className="sign-in-wrapper">
-                        <Link className="sign-in" to="/donate">Вхід</Link>
+                        <Link className="sign-in" to="/formSignIn">Вхід</Link>
                     </div>
                 </div>
             </div>

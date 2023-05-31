@@ -9,10 +9,11 @@
     box-shadow: none;
     outline: none;
 }
- h5{
-     padding-top: 0;
+
+h5{
+    padding-top: 0;
     text-align: center;
- }
+}
 
 section {
     padding: 60px 0;
@@ -151,7 +152,7 @@ section .section-title {
 
 .card-text{
     font-size: 18px;
-align-content: start;
+    align-content: start;
 }
 .h1{
     color: #3EC70B !important;
@@ -163,12 +164,12 @@ align-content: start;
 
 }
 .select-box {
-     cursor: pointer;
-     position : relative;
-     max-width:  20em;
-     margin: 20px auto;
-     width: 100%;
- }
+    cursor: pointer;
+    position : relative;
+    max-width:  20em;
+    margin: 20px auto;
+    width: 100%;
+}
 
 .select,
 .label {

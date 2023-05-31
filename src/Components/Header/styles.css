@@ -9,7 +9,7 @@
     font-family: inherit;
     font-weight: bold;
     font-size: 22px;
-
+    z-index: 3;
 }
 
 .header > ul {

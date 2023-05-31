@@ -1,9 +1,9 @@
 import { FunctionComponent } from 'react';
 import { NavLink } from "react-router-dom";
 import "./styles.css";
-import donate from "../Donate/Donate";
+//import donate from "../Donate/Donate";
 
-const Header: FunctionComponent<never> = () => {
+const Header: FunctionComponent = () => {
 
   return (
       <div className="header">

@@ -5,13 +5,11 @@
     'opsz' 48
 }
 
-
-
 .forText{
     padding-bottom: 5%;
 }
 
-h2{
+.center h2{
     text-align: center;
 }
 

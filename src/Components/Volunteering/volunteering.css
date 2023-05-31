@@ -21,6 +21,11 @@ tr, td{
 .text-activity-div{
     width: 100%;
     padding-right: 3em;
+    padding-left: 1em;
+}
+.text-activity-div>h2 {
+    margin: 0;
+ text-align: left;
 }
 .div-for-button{
     width: 20%;
@@ -37,7 +42,4 @@ tr, td{
 .registration-button:hover{
     transform: scale(1.1);
     border: 2px solid #ec6c34;
-}
-.text-activity-div > h2{
-    margin: 5px;
 }

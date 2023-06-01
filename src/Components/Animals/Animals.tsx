@@ -1,4 +1,4 @@
-import {FunctionComponent} from 'react';
+import React, {FunctionComponent} from 'react';
 import {useEffect, useState} from 'react';
 import './style.css'
 import {NavLink} from "react-router-dom";
@@ -19,68 +19,7 @@ interface PetInterface {
 }
 
 const Animals: FunctionComponent = () => {
-    // const arr = [{
-    //     "id": 1,
-    //     "name": "Max",
-    //     "age": 2,
-    //     "photo": "http://surl.li/hmcoq",
-    //     "address": "123 Main Street",
-    //     "description": "Friendly and playful dog Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium delectus doloremque quibusdam quidem? Accusantium eligendi repellat soluta voluptas voluptatibus?",
-    //     "breed": "Labrador Retriever",
-    //     "type": "Dog",
-    //     "sex": "Male",
-    //     "isActive": true
-    // },
-    //     {
-    //         "id": 2,
-    //         "name": "Bella",
-    //         "age": 4,
-    //         "photo": "http://surl.li/hmcoq",
-    //         "address": "456 Elm Street",
-    //         "description": "Cute and affectionate cat lore",
-    //         "breed": "Siamese",
-    //         "type": "Cat",
-    //         "sex": "Female",
-    //         "isActive": true
-    //     },
-    //     {
-    //         "id": 3,
-    //         "name": "Rocky",
-    //         "age": 1,
-    //         "photo": "http://surl.li/hmcoq",
-    //         "address": "789 Oak Street",
-    //         "description": "Playful and energetic puppy",
-    //         "breed": "Golden Retriever",
-    //         "type": "Dog",
-    //         "sex": "Male",
-    //         "isActive": false
-    //     },
-    //     {
-    //         "id": 3,
-    //         "name": "Rocky",
-    //         "age": 1,
-    //         "photo": "http://surl.li/hmcoq",
-    //         "address": "789 Oak Street",
-    //         "description": "Playful and energetic puppy",
-    //         "breed": "Golden Retriever",
-    //         "type": "Dog",
-    //         "sex": "Male",
-    //         "isActive": false
-    //     },
-    //     {
-    //         "id": 3,
-    //         "name": "Rocky",
-    //         "age": 1,
-    //         "photo": "http://surl.li/hmcoq",
-    //         "address": "789 Oak Street",
-    //         "description": "Playful and energetic puppy",
-    //         "breed": "Golden Retriever",
-    //         "type": "Dog",
-    //         "sex": "Male",
-    //         "isActive": false
-    //     }];
 
-    //const array = arr;
 
     const [arr, setArr] = useState<PetInterface[]>([]);
 
@@ -96,12 +35,42 @@ const Animals: FunctionComponent = () => {
         });
     }, []);
 
+    const [filterType, setFilterType] = useState('all');
+    const [filterSex, setFilterSex] = useState('all');
+    const [filterAge, setFilterAge] = useState('all');
 
-    // const filterItems = (el:string) => {
-    // const newItem = array.filter((newVal) => {
-    //     return newVal.type === el;
-    // });
-    //setItem(newItem);}
+    const filteredArr = arr.filter((x) => {
+        if (filterType === 'кіт' || filterType === 'пес') {
+            return x.type === filterType;
+        }else{
+            return x;
+        }
+    }).filter((x) => {
+        if (filterSex === 'дівчинка' || filterSex === 'хлопчик') {
+            return x.sex === filterSex;
+        }else{
+            return x;
+        }
+    }).filter((x) => {
+        if (filterAge === '0-1') {
+            return x.age === 0 || x.age === 1;
+        }else if(filterAge === '2-3'){
+            return x.age === 2 || x.age === 3;
+        }else if(filterAge === '4+'){
+            return x.age >= 4;
+        }else{
+            return x;
+        }
+    });
+    const filterByType = (e) => {
+        setFilterType(e.target.value);
+    }
+    const filterByAge = (e) => {
+        setFilterAge(e.target.value);
+    }
+    const filterBySex = (e) => {
+        setFilterSex(e.target.value);
+    }
     return (
         <div className="frame">
 
@@ -123,8 +92,8 @@ const Animals: FunctionComponent = () => {
                                 <label htmlFor="type" className="label select-box1"><span
                                     className="label-desc">Вид</span>
                                 </label>
-                                <select id="select-box1" className="select">
-                                    <option value="кіт">Вид</option>
+                                <select id="select-box1" className="select" onChange={filterByType}>
+                                    <option value="all">Вид</option>
                                     <option value="кіт">Кіт</option>
                                     <option value="пес">Пес</option>
                                 </select>
@@ -135,7 +104,8 @@ const Animals: FunctionComponent = () => {
                                 <label htmlFor="select-box1" className="label select-box1"><span
                                     className="label-desc">Стать</span>
                                 </label>
-                                <select id="sex" className="select">
+                                <select id="sex" className="select" onChange={filterBySex}>
+                                    <option value="all">Стать</option>
                                     <option value="хлопчик">хлопчик</option>
                                     <option value="дівчинка">дічинка</option>
                                 </select>
@@ -146,19 +116,19 @@ const Animals: FunctionComponent = () => {
                                 <label htmlFor="select-box1" className="label select-box1"><span
                                     className="label-desc">Вік</span>
                                 </label>
-                                <select id="age" className="select">
+                                <select id="age" className="select" onChange={filterByAge}>
+                                    <option value="all">Вік</option>
                                     <option value="0-1">0-1</option>
                                     <option value="2-3">2-3</option>
                                     <option value="4+">4+</option>
                                 </select>
 
                             </div>
-
                         </div>
                     </form>
                     <div className="row">
 
-                        {arr.map((el) => {
+                        {filteredArr.map((el) => {
                             return (
                                 <div key={'infoOf' + el.id} className="col-xs-12 col-sm-6 col-md-4">
                                     <div className="image-flip">

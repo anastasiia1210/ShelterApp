@@ -47,6 +47,9 @@ footer{
 }
 
 .sign-in {
+    padding-right: 2em;
+    background-color: black;
+    border: none;
     color: white;
     text-decoration: none;
 }

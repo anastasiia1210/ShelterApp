@@ -7,9 +7,6 @@ import Home from "./Components/Home/Home";
 import Animals from "./Components/Animals/Animals";
 import Volunteering from "./Components/Volunteering/Volunteering";
 import Donate from "./Components/Donate/Donate";
-import Request from "./Components/Request/Request.tsx";
-import FormSignIn from "./Components/Forms/FormSignIn.tsx";
-import FormVolunteering from "./Components/Forms/FormVolunteering.tsx";
 
 const router = createBrowserRouter([
     {
@@ -31,18 +28,6 @@ const router = createBrowserRouter([
             {
                 path: "/donate",
                 element: <Donate />,
-            },
-            {
-                path: "/formVolunteering",
-                element: <FormVolunteering />,
-            },
-            {
-                path: "/formSignIn",
-                element: <FormSignIn />,
-            },
-            {
-                path: "/request",
-                element: <Request />,
             }
         ],
     },

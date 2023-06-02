@@ -1,10 +1,11 @@
-import {FunctionComponent} from 'react';
+import React, {FunctionComponent, useState} from 'react';
 //import {useEffect, useState} from 'react';
 import './style.css'
 import {NavLink} from "react-router-dom";
-//import Request from "./Request.tsx";
+import RequestAnimal from "../Request/RequestAnimal";
 
 const Animals: FunctionComponent = () => {
+    const [buttonPopup, setButtonPopup] = useState (false) ;
     const arr = [{
         "id": 1,
         "name": "Max",
@@ -154,10 +155,9 @@ const Animals: FunctionComponent = () => {
                                                         <p className="card-text"><em>Опис:</em> {el.description}</p>
 
                                                         <form action="">
-                                                            <NavLink to="/request">
-                                                            <button type="submit" className="button-24 " role="button"> <h4 className = "upd">Хочу всиновити</h4>
+                                                            <button onClick={() => setButtonPopup(true)} className="registration-button" type="submit" className="button-24 " role="button"> <h4 className = "upd">Хочу всиновити</h4>
                                                                 <span className="material-symbols-outlined">pets</span>
-                                                            </button></NavLink></form>
+                                                            </button></form>
                                                     </div>
                                                 </div>
                                             </div>
@@ -171,6 +171,7 @@ const Animals: FunctionComponent = () => {
                     </div>
                 </div>
             </section>
+            <RequestAnimal trigger={buttonPopup} setTrigger={setButtonPopup}></RequestAnimal>
         </div>
     );
 };

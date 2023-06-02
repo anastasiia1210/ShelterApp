@@ -1,30 +1,50 @@
-import React, { FunctionComponent } from 'react';
+import React, {FunctionComponent, useEffect, useState} from 'react';
 import "./volunteering.css";
 import DateComponent from "./DateComponent";
 import {createBrowserRouter, Link, RouterProvider} from 'react-router-dom';
-import FormVolunteering from "../Forms/FormVolunteering";
-import Animals from "../Animals/Animals";
+import RequestVolunteering from "../Request/RequestVolunteering";
+
 const Volunteering: FunctionComponent = () => {
-interface Activity{
-    id: number
-    title: string
-    date: Date
-    number_of_people: number
-    address: string
-    description: string
-}
-const exampleActivity: Activity = {
-    id: 1,
-    title: "Вигулювання собак",
-    date: new Date(),
-    number_of_people: 10,
-    address: "вул. Лесі Українки 37, Київ",
-    description: "Просимо усіх охочих погуляти з нашими собачками. Їм потрібна ваша турбота."
-}
-    const activities = [];
-    for (let i = 0; i < 10; i++) {
-        activities.push(exampleActivity);
+    const [buttonPopup, setButtonPopup] = useState (false);
+    const [id_volunteering, setIdVolunteering] = useState(-1);
+    interface Activity{
+        address: string;
+        date:Date;
+        description: string;
+        id: number;
+        numberOfPeople: number;
+        title: string
     }
+    const [data, setData] = useState([]);
+    const [activities, setActivities] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:3001/volunteering", {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'API-Key': 'secret'
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                setData(data);
+                const activityArray = data.map(item => ({
+                    address: item.address,
+                    date: new Date(item.date),
+                    description: item.description,
+                    id: item.id,
+                    numberOfPeople: item.numberOfPeople,
+                    title: item.title
+                }));
+                activityArray.sort((a, b) => a.date - b.date);
+                setActivities(activityArray);
+            });
+    }, []);
+
+    {activities && activities.map(a => console.log(a))}
+
+
     return (
         <div className="table-wrapper">
         <table className="volunteering_table">
@@ -38,12 +58,10 @@ const exampleActivity: Activity = {
                             <p>{activity.description}</p>
                             <p>{<DateComponent date={activity.date} />}</p>
                             <p><b>Де:</b> {activity.address}</p>
-                            <p><b>Скільки людей потрібно:</b> {activity.number_of_people}</p>
+                            <p><b>Скільки людей потрібно:</b> {activity.numberOfPeople}</p>
                             </div>
                            <div className="div-for-button">
-                           <Link to="/formVolunteering">
-                               <button className="registration-button"><b>Зареєструватися</b></button>
-                           </Link>
+                               <button id={activity.id} onClick={(e) => {setButtonPopup(true); setIdVolunteering(parseInt(e.currentTarget.id, 10))}} className="registration-button"><b>Зареєструватися</b></button>
                            </div>
                         </div>
                     </td>
@@ -51,6 +69,7 @@ const exampleActivity: Activity = {
             ))}
             </tbody>
         </table>
+            <RequestVolunteering trigger={buttonPopup} setTrigger={setButtonPopup} id_volunteering={id_volunteering}></RequestVolunteering>
         </div>
     );
 };

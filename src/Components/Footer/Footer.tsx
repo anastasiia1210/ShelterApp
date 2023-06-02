@@ -1,14 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import "./footer.css";
 import { Icon } from '@iconify/react';
 import { Link } from "react-router-dom";
+import RequestVolunteering from "../Request/RequestVolunteering";
+import RequestSignIn from "../Request/RequestSignIn";
 
 const Footer: React.FC = () => {
     const company = "Little fox";
     const phone = "+380976809114";
     const email = "shelter_kyiv@gmail.com";
     const year = new Date().getFullYear();
-
+    const [buttonPopup, setButtonPopup] = useState (false);
     return (
         <footer>
             <div className="footer-content">
@@ -32,7 +34,8 @@ const Footer: React.FC = () => {
                         </a>
                     </div>
                     <div className="sign-in-wrapper">
-                        <Link className="sign-in" to="/formSignIn">Вхід</Link>
+                        <button className="sign-in" onClick={() => {setButtonPopup(true);}}>Вхід</button>
+                        <RequestSignIn trigger={buttonPopup} setTrigger={setButtonPopup}></RequestSignIn>
                     </div>
                 </div>
             </div>

@@ -145,10 +145,10 @@ const Animals: FunctionComponent = () => {
                                                         <p className="card-text"><em>Порода:</em> {el.breed}</p>
                                                         <p className="card-text"><em>Опис:</em> {el.description}</p>
 
-                                                        <form action="">
-                                                            <button onClick={() => setButtonPopup(true)} className="registration-button" type="submit" className="button-24 " role="button"> <h4 className = "upd">Хочу всиновити</h4>
+                                                        <div>
+                                                            <button onClick={() => setButtonPopup(true)} className="registration-button" className="button-24 " > <h4 className = "upd">Хочу всиновити</h4>
                                                                 <span className="material-symbols-outlined">pets</span>
-                                                            </button></form>
+                                                            </button></div>
                                                     </div>
                                                 </div>
                                             </div>

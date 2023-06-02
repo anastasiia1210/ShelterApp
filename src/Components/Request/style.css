@@ -42,7 +42,7 @@
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     outline: 0;
-    background: #4CAF50;
+    background: #3EC70B;
     width: 100%;
     border: 0;
     padding: 15px;
@@ -51,7 +51,7 @@
     cursor: pointer;
 }
 .okButton:hover,.okButton:active,.okButton:focus {
-    background: #43A047;
+    background: #319a08;
 }
 .form .message {
     margin: 15px 0 0;
@@ -59,7 +59,7 @@
     font-size: 12px;
 }
 .form .message a {
-    color: #4CAF50;
+    color: #3EC70B;
     text-decoration: none;
 }
 .form .register-form {

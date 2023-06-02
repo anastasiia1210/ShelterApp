@@ -12,7 +12,7 @@ const RequestAnimal = (props) => {
                     </div>
                     <input type="text" placeholder="ПІБ" required/>
                     <input type="phone" placeholder="Телефон" required/>
-                    <input type="phone" placeholder="Телефон" required/>
+                    <input type="email" placeholder="Email"/>
                     <button type="submit" className="okButton">Надіслати</button>
                 </form>
             </div>

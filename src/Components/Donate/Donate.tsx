@@ -14,7 +14,7 @@ const Donate: FunctionComponent = () => {
                     притулку.</h2>
                     </div>
                 <div className="cent">
-                <form action="" >
+                <form action="https://click.pulse.is/public/s/MjMyOTY=/p/MjcyMzA=/l/aHR0cHM6Ly9zZW5kLm1vbm9iYW5rLnVhL2phci8zcFA4VjhnVXdF" >
                 <button type="submit" className="button-24" role="button"> <h3 className = "forText">Допомогти</h3>
                 <span className="material-symbols-outlined">pets</span>
                 </button></form></div>

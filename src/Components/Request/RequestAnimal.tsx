@@ -9,9 +9,8 @@ const RequestAnimal = (props) => {
         petId: 0
     });
     const handleSubmit = (e) => {
-        e.preventDefault(); // Prevent default form submission
-        setFormData({ ...formData, petId: props.petId});
-        // Send the form data to the server using fetch or axios
+        e.preventDefault();
+        formData.petId = props.petId;
         fetch('http://localhost:3001/pets/request', {
             method: 'POST',
             headers: {
@@ -21,14 +20,12 @@ const RequestAnimal = (props) => {
         })
             .then((response) => response.json())
             .then((data) => {
-                // Handle the response from the server
                 console.log('Response from server:', data);
-                // Reset the form after successful submission
                 setFormData((prevFormData) => ({
                     ...prevFormData}));
+                props.setTrigger(false)
             })
             .catch((error) => {
-                // Handle any errors that occurred during the request
                 console.error('Error:', error);
             });
     };

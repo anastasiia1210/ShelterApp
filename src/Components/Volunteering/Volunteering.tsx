@@ -13,11 +13,17 @@ const Volunteering: FunctionComponent = () => {
         description: string;
         id: number;
         numberOfPeople: number;
-        title: string
+        title: string;
+        isActive: boolean
     }
     const [data, setData] = useState([]);
     const [activities, setActivities] = useState([]);
-
+   function setActivity(activity){
+       if (activity.numberOfPeople == 0 || new Date(activity.date)<new Date()){
+          return false
+       }
+       return true
+   }
     useEffect(() => {
         fetch("http://localhost:3001/volunteering", {
             method: 'GET',
@@ -35,7 +41,8 @@ const Volunteering: FunctionComponent = () => {
                     description: item.description,
                     id: item.id,
                     numberOfPeople: item.numberOfPeople,
-                    title: item.title
+                    title: item.title,
+                    isActive: setActivity(item)
                 }));
                 activityArray.sort((a, b) => a.date - b.date);
                 setActivities(activityArray);
@@ -51,7 +58,7 @@ const Volunteering: FunctionComponent = () => {
             <tbody>
             {activities.map((activity) => (
                 <tr key={activity.id}>
-                    <td>
+                    <td className={!activity.isActive ? 'notActive':'active'}>
                         <div className="activity-wrapper">
                             <div className="text-activity-div">
                             <h2>{activity.title}</h2>

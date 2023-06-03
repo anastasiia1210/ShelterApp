@@ -24,6 +24,10 @@ const RequestSignIn = (props) => {
                 setFormData((prevFormData) => ({
                     ...prevFormData}));
                 props.setTrigger(false)
+                setFormData({
+                    login: '',
+                    password: '',
+                });
             })
             .catch((error) => {
 

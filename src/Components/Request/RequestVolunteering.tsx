@@ -8,10 +8,6 @@ const RequestVolunteering = (props) => {
         volunteeringId: 0
     });
 
-   /* useEffect(() => {
-        console.log(props.id_volunteering + " = " + formData.volunteeringId);
-    }, [formData.volunteeringId]);*/
-
     const handleSubmit = (e) => {
         e.preventDefault(); // Prevent default form submission
         formData.volunteeringId = props.id_volunteering;
@@ -40,7 +36,18 @@ const RequestVolunteering = (props) => {
                 // Handle any errors that occurred during the request
                 console.error('Error:', error);
             });
-    };
+        fetch(`http://localhost:3001/volunteering/${props.id_volunteering}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({}),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('change:', data.id);
+              props.setPeople(data.numberOfPeople);
+    });}
 
     return (props.trigger) ? (
         <div className="login-page">

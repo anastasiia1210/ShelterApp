@@ -7,6 +7,7 @@ import RequestVolunteering from "../Request/RequestVolunteering";
 const Volunteering: FunctionComponent = () => {
     const [buttonPopup, setButtonPopup] = useState (false);
     const [id_volunteering, setIdVolunteering] = useState(-1);
+    const [people, setPeople] = useState(0);
     interface Activity{
         address: string;
         date:Date;
@@ -35,7 +36,7 @@ const Volunteering: FunctionComponent = () => {
             .then(res => res.json())
             .then(data => {
                 setData(data);
-                const activityArray = data.map(item => ({
+                let activityArray = data.map(item => ({
                     address: item.address,
                     date: new Date(item.date),
                     description: item.description,
@@ -44,10 +45,11 @@ const Volunteering: FunctionComponent = () => {
                     title: item.title,
                     isActive: setActivity(item)
                 }));
+                activityArray = activityArray.filter((item) => item.isActive === true);
                 activityArray.sort((a, b) => a.date - b.date);
                 setActivities(activityArray);
             });
-    }, []);
+    }, [people]);
 
     {activities && activities.map(a => console.log(a))}
 
@@ -76,7 +78,7 @@ const Volunteering: FunctionComponent = () => {
             ))}
             </tbody>
         </table>
-            <RequestVolunteering trigger={buttonPopup} setTrigger={setButtonPopup} id_volunteering={id_volunteering}></RequestVolunteering>
+            <RequestVolunteering trigger={buttonPopup} setTrigger={setButtonPopup} id_volunteering={id_volunteering} people={people} setPeople={setPeople}></RequestVolunteering>
         </div>
     );
 };

@@ -11,10 +11,27 @@ const RequestSignIn = (props) => {
         // Perform registration logic with formData
         console.log(formData);
         // Reset form fields
-        setFormData({
-            login: '',
-            password: '',
-        });
+        fetch('http://localhost:3001/auth', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('Response from server:', data);
+                setFormData((prevFormData) => ({
+                    ...prevFormData}));
+                props.setTrigger(false)
+            })
+            .catch((error) => {
+
+                console.error('Error:', error);
+            });
+
+
+
     };
 
     return (props.trigger) ? (

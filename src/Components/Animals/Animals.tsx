@@ -22,7 +22,7 @@ const Animals: FunctionComponent = () => {
 
     const [buttonPopup, setButtonPopup] = useState (false) ;
     const [arr, setArr] = useState<PetInterface[]>([]);
-
+    const [idPet, setIdPet] = useState(-1);
     useEffect(() => {
         fetch("http://localhost:3001/pets").then((res) => {
                 console.log(res)
@@ -146,7 +146,7 @@ const Animals: FunctionComponent = () => {
                                                         <p className="card-text"><em>Опис:</em> {el.description}</p>
 
                                                         <div>
-                                                            <button onClick={() => setButtonPopup(true)} className="registration-button" className="button-24 " > <h4 className = "upd">Хочу всиновити</h4>
+                                                            <button onClick={() => {setButtonPopup(true); setIdPet(el.id);}} className="registration-button" className="button-24 " > <h4 className = "upd">Хочу всиновити</h4>
                                                                 <span className="material-symbols-outlined">pets</span>
                                                             </button></div>
                                                     </div>
@@ -162,7 +162,7 @@ const Animals: FunctionComponent = () => {
                     </div>
                 </div>
             </section>
-            <RequestAnimal trigger={buttonPopup} setTrigger={setButtonPopup}></RequestAnimal>
+            <RequestAnimal trigger={buttonPopup} setTrigger={setButtonPopup} petId={idPet}></RequestAnimal>
         </div>
     );
 };

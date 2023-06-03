@@ -1,20 +1,22 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import "./style.css";
-import volunteering from "../Volunteering/Volunteering";
 const RequestVolunteering = (props) => {
     const [formData, setFormData] = useState({
-        id: 0,
         name: '',
         phone: '',
         email: '',
-        volunteering_id: props.id_volunteering
+        volunteeringId: 0
     });
+
+    useEffect(() => {
+        console.log(props.id_volunteering + " = " + formData.volunteeringId);
+    }, [formData.volunteeringId]);
 
     const handleSubmit = (e) => {
         e.preventDefault(); // Prevent default form submission
-        console.log(formData);
+        setFormData({ ...formData, volunteering_id: props.id_volunteering});
         // Send the form data to the server using fetch or axios
-        /*fetch('http://localhost:3001/volunteering-request', {
+        fetch('http://localhost:3001/request.volunteering', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -27,14 +29,12 @@ const RequestVolunteering = (props) => {
                 console.log('Response from server:', data);
                 // Reset the form after successful submission
                 setFormData((prevFormData) => ({
-                    ...prevFormData,
-                    id: prevFormData.id + 1,
-                }));
+                    ...prevFormData}));
             })
             .catch((error) => {
                 // Handle any errors that occurred during the request
                 console.error('Error:', error);
-            });*/
+            });
     };
 
     return (props.trigger) ? (

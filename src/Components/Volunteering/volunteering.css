@@ -43,11 +43,3 @@ tr, td{
     transform: scale(1.1);
     border: 2px solid #ec6c34;
 }
-.notActive{
-    border: 2px solid grey;
-
-}
-.notActive button{
-    background: grey;
-    pointer-events: none;
-}

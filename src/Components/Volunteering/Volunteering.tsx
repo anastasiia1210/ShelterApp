@@ -60,7 +60,7 @@ const Volunteering: FunctionComponent = () => {
             <tbody>
             {activities.map((activity) => (
                 <tr key={activity.id}>
-                    <td className={!activity.isActive ? 'notActive':'active'}>
+                    <td>
                         <div className="activity-wrapper">
                             <div className="text-activity-div">
                             <h2>{activity.title}</h2>

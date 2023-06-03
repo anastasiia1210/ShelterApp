@@ -30,7 +30,7 @@ const RequestSignIn = (props) => {
                 });
             })
             .catch((error) => {
-
+               alert('Login or password is INCORRECT')
                 console.error('Error:', error);
             });
 
@@ -43,7 +43,10 @@ const RequestSignIn = (props) => {
             <div className="form">
                 <form className="login-form" onSubmit={handleSubmit}>
                     <div className="forClose">
-                        <button className="closeButton" onClick={() => props.setTrigger(false)}>&times;</button>
+                        <button className="closeButton" onClick={() => {props.setTrigger(false); setFormData({
+                            login: '',
+                            password: '',
+                        });}}>&times;</button>
                     </div>
                     <input type="text" placeholder="Логін" required value={formData.login}
                            onChange={(e) => setFormData({ ...formData, login: e.target.value })} />

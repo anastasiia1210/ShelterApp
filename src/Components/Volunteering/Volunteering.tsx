@@ -49,8 +49,8 @@ const Volunteering: FunctionComponent = () => {
         <div className="table-wrapper">
         <table className="volunteering_table">
             <tbody>
-            {activities.map((activity, index) => (
-                <tr key={index}>
+            {activities.map((activity) => (
+                <tr key={activity.id}>
                     <td>
                         <div className="activity-wrapper">
                             <div className="text-activity-div">
@@ -61,7 +61,7 @@ const Volunteering: FunctionComponent = () => {
                             <p><b>Скільки людей потрібно:</b> {activity.numberOfPeople}</p>
                             </div>
                            <div className="div-for-button">
-                               <button id={activity.id} onClick={(e) => {setButtonPopup(true); setIdVolunteering(parseInt(e.currentTarget.id, 10))}} className="registration-button"><b>Зареєструватися</b></button>
+                               <button id={activity.id} onClick={(e) => {setButtonPopup(true); setIdVolunteering(activity.id)}} className="registration-button"><b>Зареєструватися</b></button>
                            </div>
                         </div>
                     </td>

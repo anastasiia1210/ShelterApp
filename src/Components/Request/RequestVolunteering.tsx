@@ -8,13 +8,14 @@ const RequestVolunteering = (props) => {
         volunteeringId: 0
     });
 
-    useEffect(() => {
+   /* useEffect(() => {
         console.log(props.id_volunteering + " = " + formData.volunteeringId);
-    }, [formData.volunteeringId]);
+    }, [formData.volunteeringId]);*/
 
     const handleSubmit = (e) => {
         e.preventDefault(); // Prevent default form submission
-        setFormData({ ...formData, volunteering_id: props.id_volunteering});
+        formData.volunteeringId = props.id_volunteering;
+        console.log(formData.volunteeringId+" = "+props.id_volunteering);
         // Send the form data to the server using fetch or axios
         fetch('http://localhost:3001/request.volunteering', {
             method: 'POST',
@@ -28,8 +29,12 @@ const RequestVolunteering = (props) => {
                 // Handle the response from the server
                 console.log('Response from server:', data);
                 // Reset the form after successful submission
-                setFormData((prevFormData) => ({
-                    ...prevFormData}));
+                /*setFormData((prevFormData) => ({
+                    ...prevFormData}));*/
+                formData.name = '';
+                formData.phone = '';
+                formData.email = '';
+                props.setTrigger(false);
             })
             .catch((error) => {
                 // Handle any errors that occurred during the request

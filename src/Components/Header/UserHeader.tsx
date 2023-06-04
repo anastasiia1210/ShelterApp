@@ -1,0 +1,25 @@
+import { FunctionComponent } from 'react';
+import { NavLink } from "react-router-dom";
+import "./header.css";
+
+const UserHeader: FunctionComponent<never> = () => {
+    return (
+        <div className="header-wrapper">
+            <nav>
+                <ul className="header-nav">
+                    <li>
+                        <NavLink className="nav-link" to="/animals">Запити на тварин</NavLink>
+                    </li>
+                    <li>
+                        <NavLink className="nav-link" to="/volunteering">Запити на волонтерство</NavLink>
+                    </li>
+                </ul>
+            </nav>
+            <div className="logo-wrapper">
+                <img src="src/Images/logo-transparent-bg.png" alt="Logo" />
+            </div>
+        </div>
+    );
+};
+
+export default UserHeader;

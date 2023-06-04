@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import "./footer.css";
 import { Icon } from '@iconify/react';
-import { Link } from "react-router-dom";
 import RequestVolunteering from "../Request/RequestVolunteering";
 import RequestSignIn from "../Request/RequestSignIn";
+import {render} from "react-dom";
 
-const Footer: React.FC = () => {
+const Footer = (props) => {
     const company = "Little fox";
     const phone = "+380976809114";
     const email = "shelter_kyiv@gmail.com";
@@ -34,8 +34,9 @@ const Footer: React.FC = () => {
                         </a>
                     </div>
                     <div className="sign-in-wrapper">
-                        <button className="sign-in" onClick={() => {setButtonPopup(true);}}>Вхід</button>
-                        <RequestSignIn trigger={buttonPopup} setTrigger={setButtonPopup}></RequestSignIn>
+                        {!props.authUser ?  <button className="sign-in" onClick={() => {setButtonPopup(true)}}>Вхід</button>:
+                        <button className="sign-in" onClick={()=>{render; props.setAuthUser(false)}}>Вихід</button>}
+                        <RequestSignIn trigger={buttonPopup} setTrigger={setButtonPopup} authUser={props.authUser} setAuthUser={props.setAuthUser}></RequestSignIn>
                     </div>
                 </div>
             </div>

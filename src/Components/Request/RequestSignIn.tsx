@@ -21,6 +21,7 @@ const RequestSignIn = (props) => {
             .then((response) => response.json())
             .then((data) => {
                 console.log('Response from server:', data);
+                props.setAuthUser(true);
                 setFormData((prevFormData) => ({
                     ...prevFormData}));
                 props.setTrigger(false)

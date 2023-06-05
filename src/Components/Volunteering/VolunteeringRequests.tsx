@@ -8,7 +8,6 @@ import AddVolunteering from "../Request/AddVolunteering";
 import EditVolunteering from "../Request/EditVolunteering";
 
 const VolunteeringRequests: FunctionComponent = () => {
-    //const [buttonPopup, setButtonPopup] = useState (false);
     const [buttonAddPopup, setButtonAddPopup] = useState(false);
     const [buttonEditPopup, setButtonEditPopup] = useState(false);
     const [requests, setRequests] = useState([]);
@@ -56,7 +55,6 @@ const VolunteeringRequests: FunctionComponent = () => {
                'API-Key': 'secret'
            }
        }).then(res => res.json()).then(data => (console.log(data)));
-       //setIdDelete(id);
    }
     function takePeople(id){
         setRequests([]);
@@ -101,6 +99,7 @@ const VolunteeringRequests: FunctionComponent = () => {
                 //activityArray = activityArray.filter((item) => item.isActive === true);
                 activityArray.sort((a, b) => a.date - b.date);
                 setActivities(activityArray);
+                console.log(refresh)
             });
     console.log('useEffect');
     }, [refresh]);
@@ -130,7 +129,7 @@ const VolunteeringRequests: FunctionComponent = () => {
                                 <div className="edit-button-div">
                                     <button id='show' className="edit-buttons" onClick={(e) => {setIdVolunteering(activity.id); takePeople(activity.id)}}>Зареєстровані</button>
                                     <button id='edit' className="edit-buttons" onClick={(e) => {setIdEdit(activity.id); setButtonEditPopup(true)}}>Редагувати</button>
-                                    <button id='remove' className="edit-buttons"onClick={(e) => {deleteVolunteering(activity.id)}}>Видалити</button>
+                                    <button id='remove' className="edit-buttons"onClick={(e) => {setRefresh(refresh+1); deleteVolunteering(activity.id);}}>Видалити</button>
                                    {/* <button id={activity.id} onClick={(e) => {setButtonPopup(true); setIdVolunteering(activity.id)}} className="registration-button"><b>Зареєструватися</b></button>*/}
                                 </div>
                             </div>

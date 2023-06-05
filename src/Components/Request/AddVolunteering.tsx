@@ -42,6 +42,7 @@ const FormVolunteering = (props) => {
                 console.log('Response from server:', data);
                 cleanFormData();
                 props.setRefresh(props.refresh+1);
+                console.log('refresh = '+props.refresh)
                 props.setTrigger(false);
             })
             .catch((error) => {

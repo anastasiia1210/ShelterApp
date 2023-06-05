@@ -7,6 +7,7 @@ import Home from "./Components/Home/Home";
 import Animals from "./Components/Animals/Animals";
 import Volunteering from "./Components/Volunteering/Volunteering";
 import Donate from "./Components/Donate/Donate";
+import VolunteeringRequests from "./Components/Volunteering/VolunteeringRequests";
 
 const router = createBrowserRouter([
     {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
             {
                 path: "/donate",
                 element: <Donate />,
+            },
+            {
+                path: "/volunteeringRequests",
+                element: <VolunteeringRequests/>,
             }
         ],
     },

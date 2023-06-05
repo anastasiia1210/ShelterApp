@@ -43,3 +43,45 @@ tr, td{
     transform: scale(1.1);
     border: 2px solid #ec6c34;
 }
+.for-plus{
+
+}
+.button-plus{
+    float: right;
+    height: 100%;
+    font-size: 2em;
+    width: auto;
+    background: none;
+    border: none;
+}
+.button-plus:hover{
+    transform: scale(1.3);
+}
+.edit-buttons{
+    border: none;
+    margin-left: 5px;
+    color: white;
+}
+#show{
+    background: #ec6c34;
+}
+#edit{
+    background: #3ec70b;
+}
+#remove{
+    background: red;
+}
+.edit-button-div{
+    width: 30%;
+}
+.div-requests{
+    padding-left: 26px;
+}
+.volunt_data-div{
+    display: flex;
+    flex-direction: row;
+}
+.volunt_data-div p{
+    padding: 5px;
+}
+

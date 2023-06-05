@@ -8,13 +8,13 @@ const UserHeader: FunctionComponent<never> = () => {
             <nav>
                 <ul className="header-nav">
                     <li>
-                        <NavLink className="nav-link" to="/volunteering">Волонтерство</NavLink>
+                        <NavLink className="nav-link" to="/volunteeringRequests">Волонтерство</NavLink>
                     </li>
                     <li>
                         <NavLink className="nav-link" to="/animals">Тварини</NavLink>
                     </li>
                     <li>
-                        <NavLink className="nav-link" to="/">Запити</NavLink>
+                        <NavLink className="nav-link" to="/donate">Запити</NavLink>
                     </li>
                 </ul>
             </nav>

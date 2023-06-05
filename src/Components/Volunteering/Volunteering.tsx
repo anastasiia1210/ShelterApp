@@ -59,8 +59,8 @@ const Volunteering: FunctionComponent = () => {
         <table className="volunteering_table">
             <tbody>
             {activities.map((activity) => (
-                <tr key={activity.id}>
-                    <td>
+                <tr className='mainTable' key={activity.id}>
+                    <td className='mainTable'>
                         <div className="activity-wrapper">
                             <div className="text-activity-div">
                             <h2>{activity.title}</h2>

@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import "./style.css";
+import {render} from "react-dom";
 const RequestSignIn = (props) => {
     const [formData, setFormData] = useState({
         login: '',
         password: '',
     });
+        const navigate = useNavigate();
+        const changePage = () => {
+            navigate('/volunteeringRequests');
+        };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -21,6 +27,7 @@ const RequestSignIn = (props) => {
             .then((response) => response.json())
             .then((data) => {
                 console.log('Response from server:', data);
+                changePage();
                 props.setAuthUser(true);
                 setFormData((prevFormData) => ({
                     ...prevFormData}));

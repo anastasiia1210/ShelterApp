@@ -4,14 +4,17 @@ import DateComponent from "./DateComponent";
 import {createBrowserRouter, Link, RouterProvider} from 'react-router-dom';
 import RequestVolunteering from "../Request/RequestVolunteering";
 import {render} from "react-dom";
-import FormVolunteering from "../Request/FormVolunteering";
+import AddVolunteering from "../Request/AddVolunteering";
+import EditVolunteering from "../Request/EditVolunteering";
 
 const VolunteeringRequests: FunctionComponent = () => {
-    const [buttonPopup, setButtonPopup] = useState (false);
+    //const [buttonPopup, setButtonPopup] = useState (false);
+    const [buttonAddPopup, setButtonAddPopup] = useState(false);
+    const [buttonEditPopup, setButtonEditPopup] = useState(false);
     const [requests, setRequests] = useState([]);
     const [id_volunteering, setIdVolunteering] = useState(-1);
-    const [id_delete, setIdDelete] = useState(-1);
-    const [add, setAdd] = useState(0);
+    const [id_edit, setIdEdit] = useState(-1);
+    const [refresh, setRefresh] = useState(-1);
     const[requestToChange, setRequestToChange] = useState(false);
     const [activityToChange, setActivityToChange] = useState({
         title: '',
@@ -53,6 +56,7 @@ const VolunteeringRequests: FunctionComponent = () => {
                'API-Key': 'secret'
            }
        }).then(res => res.json()).then(data => (console.log(data)));
+       //setIdDelete(id);
    }
     function takePeople(id){
         setRequests([]);
@@ -99,7 +103,7 @@ const VolunteeringRequests: FunctionComponent = () => {
                 setActivities(activityArray);
             });
     console.log('useEffect');
-    }, [id_delete, add]);
+    }, [refresh]);
 
     {activities && activities.map(a => console.log(a))}
 
@@ -107,7 +111,7 @@ const VolunteeringRequests: FunctionComponent = () => {
     return (
         <div className="table-wrapper">
             <div className="for-plus">
-                <button className="button-plus" onClick={(e) => {setButtonPopup(true)}}>+</button>
+                <button className="button-plus" onClick={(e) => {setButtonAddPopup(true)}}>+</button>
             </div>
             <table className="volunteering_table">
                 <tbody>
@@ -125,8 +129,8 @@ const VolunteeringRequests: FunctionComponent = () => {
                                 </div>
                                 <div className="edit-button-div">
                                     <button id='show' className="edit-buttons" onClick={(e) => {setIdVolunteering(activity.id); takePeople(activity.id)}}>Зареєстровані</button>
-                                    <button id='edit' className="edit-buttons" onClick={(e) => {setIdVolunteering(activity.id); setRequestToChange(true); setButtonPopup(true); setActivityToChange(activity);}}>Редагувати</button>
-                                    <button id='remove' className="edit-buttons"onClick={(e) => {deleteVolunteering(activity.id); setIdDelete(activity.id)}}>Видалити</button>
+                                    <button id='edit' className="edit-buttons" onClick={(e) => {setIdEdit(activity.id); setButtonEditPopup(true)}}>Редагувати</button>
+                                    <button id='remove' className="edit-buttons"onClick={(e) => {deleteVolunteering(activity.id)}}>Видалити</button>
                                    {/* <button id={activity.id} onClick={(e) => {setButtonPopup(true); setIdVolunteering(activity.id)}} className="registration-button"><b>Зареєструватися</b></button>*/}
                                 </div>
                             </div>
@@ -148,7 +152,8 @@ const VolunteeringRequests: FunctionComponent = () => {
                 ))}
                 </tbody>
             </table>
-            <FormVolunteering trigger={buttonPopup} setTrigger={setButtonPopup} id_change={id_volunteering} add={add} setAdd={setAdd} data={activityToChange} setData={setActivityToChange} change={requestToChange} setChange={setRequestToChange}></FormVolunteering>
+            <AddVolunteering trigger={buttonAddPopup} setTrigger={setButtonAddPopup} refresh={refresh} setRefresh={setRefresh}></AddVolunteering>
+            <EditVolunteering trigger={buttonEditPopup} setTrigger={setButtonEditPopup} refresh={refresh} setRefresh={setRefresh} id={id_edit}></EditVolunteering>
         </div>
     );
 };

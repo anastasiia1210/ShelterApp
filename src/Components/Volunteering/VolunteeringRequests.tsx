@@ -14,14 +14,8 @@ const VolunteeringRequests: FunctionComponent = () => {
     const [id_volunteering, setIdVolunteering] = useState(-1);
     const [id_edit, setIdEdit] = useState(-1);
     const [refresh, setRefresh] = useState(-1);
-    const[requestToChange, setRequestToChange] = useState(false);
-    const [activityToChange, setActivityToChange] = useState({
-        title: '',
-        date: Date,
-        numberOfPeople: '',
-        address: '',
-        description: ''
-    });
+    const [activities, setActivities] = useState([]);
+    const [openDiv, setOpenDiv] = useState(true)
 
     interface Activity{
         address: string;
@@ -37,8 +31,8 @@ const VolunteeringRequests: FunctionComponent = () => {
         phone: string,
         email: string
     }
-    const [data, setData] = useState([]);
-    const [activities, setActivities] = useState([]);
+    //const [data, setData] = useState([]);
+
     function setActivity(activity){
         if (activity.numberOfPeople == 0 || new Date(activity.date)<new Date()){
             return false
@@ -57,7 +51,6 @@ const VolunteeringRequests: FunctionComponent = () => {
        }).then(res => res.json()).then(data => (console.log(data)));
    }
     function takePeople(id){
-        setRequests([]);
         const url = "http://localhost:3001/request.volunteering/"+id;
         fetch(url, {
             method: 'GET',
@@ -73,7 +66,7 @@ const VolunteeringRequests: FunctionComponent = () => {
                 email: i.email
             }))
             setRequests(array);
-            console.log(array);
+            console.log('takePeople');
         });
 }
     useEffect(() => {
@@ -86,7 +79,6 @@ const VolunteeringRequests: FunctionComponent = () => {
         })
             .then(res => res.json())
             .then(data => {
-                setData(data);
                 const activityArray = data.map(item => ({
                     address: item.address,
                     date: new Date(item.date),
@@ -99,12 +91,11 @@ const VolunteeringRequests: FunctionComponent = () => {
                 //activityArray = activityArray.filter((item) => item.isActive === true);
                 activityArray.sort((a, b) => a.date - b.date);
                 setActivities(activityArray);
-                console.log(refresh)
             });
     console.log('useEffect');
     }, [refresh]);
 
-    {activities && activities.map(a => console.log(a))}
+    //{activities && activities.map(a => console.log(a))}
 
 
     return (
@@ -127,23 +118,25 @@ const VolunteeringRequests: FunctionComponent = () => {
                                     <p><b>Скільки людей потрібно:</b> {activity.numberOfPeople}</p>
                                 </div>
                                 <div className="edit-button-div">
-                                    <button id='show' className="edit-buttons" onClick={(e) => {setIdVolunteering(activity.id); takePeople(activity.id)}}>Зареєстровані</button>
+                                    <button id='show' className="edit-buttons" onClick={(e) => {setIdVolunteering(activity.id); takePeople(activity.id); setOpenDiv(true)}}>Зареєстровані</button>
                                     <button id='edit' className="edit-buttons" onClick={(e) => {setIdEdit(activity.id); setButtonEditPopup(true)}}>Редагувати</button>
                                     <button id='remove' className="edit-buttons"onClick={(e) => {setRefresh(refresh+1); deleteVolunteering(activity.id);}}>Видалити</button>
                                    {/* <button id={activity.id} onClick={(e) => {setButtonPopup(true); setIdVolunteering(activity.id)}} className="registration-button"><b>Зареєструватися</b></button>*/}
                                 </div>
                             </div>
                             <div className="div-requests">
-                                    <div>
-                                            {activity.id === id_volunteering && requests.length>0 &&
-                                                requests.map((r) => (
-                                                    <div className='volunt_data-div'>
+                                {(activity.id === id_volunteering && openDiv) ? (
+                                    <>
+                                        {requests.map((r) => (
+                                            <div className='volunt_data-div' key={r.id}>
                                                 <p>ПІБ: {r.name}</p>
                                                 <p>Телефон: {r.phone}</p>
-                                               <p>Email: {r.email}</p>
-                                                    </div>
-                                           ))}
-                                    </div>
+                                                {(r.email) ?  (<p>Email: {r.email}</p>):(<p>Email: не вказано</p>)}
+                                            </div>
+                                        ))}
+                                        <button className='buttonToClose' onClick={() => setOpenDiv(false)}>Згорнути</button>
+                                    </>
+                                ) : null}
                             </div>
                             </div>
                         </td>

@@ -11,10 +11,10 @@ const UserHeader: FunctionComponent<never> = () => {
                         <NavLink className="nav-link" to="/volunteering">Волонтерство</NavLink>
                     </li>
                     <li>
-                        <NavLink className="nav-link" to="/animals">Тварини</NavLink>
+                        <NavLink className="nav-link" to="/animals-admin">Тварини</NavLink>
                     </li>
                     <li>
-                        <NavLink className="nav-link" to="/">Запити</NavLink>
+                        <NavLink className="nav-link" to="/animals-request">Запити</NavLink>
                     </li>
                 </ul>
             </nav>

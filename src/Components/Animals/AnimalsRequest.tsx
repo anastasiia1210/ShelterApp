@@ -52,12 +52,13 @@ const AnimalsRequest: FunctionComponent = () => {
                                     <p><b>ID тварини:</b> {el.petId}</p>
                                 </div>
                                 <div className="div-for-button">
+                                    <div>
                                     <button onClick={(e) => {
                                         setButtonPopup(true); setidReq(el.id)
-                                    }} className="button-24 red marg"><b>Видалити</b></button>
-                                    <button onClick={(e) => {
+                                    }} className="button-24 red marg"><b>Видалити</b></button></div>
+                                    <div><button onClick={(e) => {
                                         setButtonShowPopup(true); setIdPet(el.petId)
-                                    }} className="button-24"><b>Переглянути</b></button>
+                                    }} className="button-24"><b>Переглянути</b></button></div>
                                 </div>
                             </div>
                         </td>

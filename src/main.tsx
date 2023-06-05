@@ -8,6 +8,8 @@ import Animals from "./Components/Animals/Animals";
 import Volunteering from "./Components/Volunteering/Volunteering";
 import Donate from "./Components/Donate/Donate";
 import VolunteeringRequests from "./Components/Volunteering/VolunteeringRequests";
+import AnimalsAdmin from "./Components/Animals/AnimalsAdmin";
+import AnimalsRequest from "./Components/Animals/AnimalsRequest";
 
 const router = createBrowserRouter([
     {
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
             {
                 path: "/donate",
                 element: <Donate />,
+            },
+            {
+                path: "/animals-admin",
+                element: <AnimalsAdmin />,
+            },
+            {
+                path: "/animals-request",
+                element: <AnimalsRequest />,
             },
             {
                 path: "/volunteeringRequests",

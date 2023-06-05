@@ -137,7 +137,21 @@
     float: right;
     padding: 0;
 }
-
 .marg{
     margin-bottom: 10px;
+}
+.textDiv{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    min-height: 250px;
+    min-width: 300px;
+}
+.textDiv>input{
+    height: 25px;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+.labels{
+    font-size: 12px;
 }
